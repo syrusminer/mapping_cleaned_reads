@@ -75,12 +75,12 @@ The ```bwa``` help menu on the command line isn't great, so to see options for r
 ### Indexing
 Before mapping reads to the reference, an "index" that breaks the reference into manageable chunks needs to be created. Similar to when you want to search for a term in a textbook, having a searchable index is much more efficient than looking through all of the material.
 
-While in the ```Reference``` directory, create an index for the "covid19-refseq.fasta" (the sars-cov-2 virus genome):
+While in the ```Reference``` directory, create an index for the "GCF_000688415.1_ASM68841v1_genomic.fna" (the sars-cov-2 virus genome):
 
 ```
 cd Reference
 module load bwa
-bwa index covid19-refseq.fasta
+bwa index GCF_000688415.1_ASM68841v1_genomic.fna
 ```
 
 You'll see that this creates a file called "covid-19-refseq.fasta.fai". This file contains 5 tab-delimited files. For organisms with multiple chromosomes, there will be a line for each chromosome
@@ -90,9 +90,29 @@ You'll see that this creates a file called "covid-19-refseq.fasta.fai". This fil
 After creating the reference index, you are ready to map reads to the reference! We'll be using the ```mem``` algorithm. This version of ```bwa``` is efficient and accurate at mapping reads for long and short reads to large and small reference sequences for both paired-end and sing-end sequence data. The syntax is simple, try the following while in the main directory:
 
 ```
-bwa mem Reference/covid19-refseq.fasta example.fastq > example.sam
+bwa mem Reference/GCF_000688415.1_ASM68841v1_genomic.fna example.fastq > example.sam
 ```
 
+### Alignment File Processing
+
+Alignment files in the ```.sam``` format can be very large. You can convert the ```example.sam``` file to a ```.bam``` (binary alignment map) using the software package [samtools](http://www.htslib.org/).
+
+```
+module load samtools
+samtools sort example.sam > example.bam
+```
+
+Compare the file sizes between your ```.sam``` and ```.bam``` files:
+
+```
+ls example* -lh
+```
+
+You can also calculate your read depth at positions along your reference genome using samtools. Try the following:
+
+```
+samtools depth example.bam
+```
 
 
 ```
