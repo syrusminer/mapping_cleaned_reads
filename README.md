@@ -66,29 +66,33 @@ Mapping reads is based on the evolutionary principle of homology. Homologous loc
 
 In addition to mismatches, data that comes from mRNA (e.g., RNA-seq) will contain reads that are not found in the genome due to splicing. In other words, genes contain coding regions (exons) which are interrupted by non-coding regions (introns). In the mRNA, these exons are joined together in a single genetic sequence. However, if this mRNA is being mapped to a reference genome, then accounting for the introns is necessary for accurate mapping. **When working with RNA-seq data, it is important to use a "splice-aware" aligner when mapping reads to a reference genome. Examples of splice-aware aligners include [Tophat](https://ccb.jhu.edu/software/tophat/index.shtml), [STAR](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3530905/), and [minimap2](https://github.com/lh3/minimap2).**
 
-We will be using the software package ***[minimap2](https://github.com/lh3/minimap2)*.
+We will be using the software package ***[BWA](https://bio-bwa.sourceforge.net/bwa.shtml)***.
 
-# Looking at an alignment program
+# Looking at the alignment program
 
-While on the CHPC in this repository:
-```
-module load minimap2/2.24
-minimap2 -h
-```
-
-From the minimap2 help menu, you will see sections on "Indexing", "Mapping", "Alignment", and "Input/Output". Let's break these down:
+The ```bwa``` help menu on the command line isn't great, so to see options for running the software see the [website](https://bio-bwa.sourceforge.net/bwa.shtml). 
 
 ### Indexing
-Before mapping reads to the reference, an "index" that breaks the reference into manageable chunks needs to be created. Similar to when you want to search for a term in a textbook, having a searchable index is much more efficient than looking through all of the material. When creating your index, you can specify how long each chunk will be (```-k```), 
+Before mapping reads to the reference, an "index" that breaks the reference into manageable chunks needs to be created. Similar to when you want to search for a term in a textbook, having a searchable index is much more efficient than looking through all of the material.
 
-While in this woroking directory, create an index for the "covid19-refseq.fasta" (the sars-cov-2 virus genome):
+While in the ```Reference``` directory, create an index for the "covid19-refseq.fasta" (the sars-cov-2 virus genome):
 
 ```
-module load samtools/1.16
-samtools faidx covid19-refseq.fasta
+cd Reference
+module load bwa
+bwa index covid19-refseq.fasta
 ```
 
 You'll see that this creates a file called "covid-19-refseq.fasta.fai". This file contains 5 tab-delimited files. For organisms with multiple chromosomes, there will be a line for each chromosome
+
+### Mapping
+
+After creating the reference index, you are ready to map reads to the reference! We'll be using the ```mem``` algorithm. This version of ```bwa``` is efficient and accurate at mapping reads for long and short reads to large and small reference sequences for both paired-end and sing-end sequence data. The syntax is simple, try the following while in the main directory:
+
+```
+bwa mem Reference/covid19-refseq.fasta example.fastq > example.sam
+```
+
 
 
 ```
