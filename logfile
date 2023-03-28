@@ -1,0 +1,11 @@
+
+Working directory:  /uufs/chpc.utah.edu/common/home/u0612750/BIOL_4310/Exercises/Exercise_5/mapping_cleaned_reads
+Illumina data:      HumanNasalMicrobiota_Illumina.txt
+Nanopore data:      HumanNasalMicrobiota_Nanopore.txt
+Genome file:        covid19-refseq.fasta
+Threads:            1
+
+Indexing Reference
+
+Aligning Illumina datasets againts reference with bwa mem, using 1 threads.
+

@@ -81,7 +81,14 @@ From the minimap2 help menu, you will see sections on "Indexing", "Mapping", "Al
 ### Indexing
 Before mapping reads to the reference, an "index" that breaks the reference into manageable chunks needs to be created. Similar to when you want to search for a term in a textbook, having a searchable index is much more efficient than looking through all of the material. When creating your index, you can specify how long each chunk will be (```-k```), 
 
-Create an index for the 
+While in this woroking directory, create an index for the "covid19-refseq.fasta" (the sars-cov-2 virus genome):
+
+```
+module load samtools/1.16
+samtools faidx covid19-refseq.fasta
+```
+
+You'll see that this creates a file called "covid-19-refseq.fasta.fai". This file contains 5 tab-delimited files. For organisms with multiple chromosomes, there will be a line for each chromosome
 
 
 ```
