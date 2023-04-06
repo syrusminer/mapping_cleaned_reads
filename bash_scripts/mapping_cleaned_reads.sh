@@ -6,7 +6,7 @@ This program will trim and map reads from given SRA sequences files to compare m
     -h  show this help text
     -I  File or path to SRA accession list for Illumina data in tabular format
     -N  File or path to SRA accession list for Nanopore data in tabular format
-    -g  The SARS-CoV-2 reference genome (in fasta format). It is assumed that the genome is within the References directory in -d 
+    -g  The reference genome (in fasta format). It is assumed that the genome is within the References directory in -d 
     -d  Path to the working directory (the main directory for the repository)
     -t  Number of CPU processors"
 options=':h:N:I:g:t:d:'
@@ -58,30 +58,30 @@ mkdir -p Nanopore/mapped_reads
 
 module load sra-toolkit/3.0.2
 
-cd ${d}
-echo "Downloading Illumina SRA files from the given list of accessions"
-cd Illumina/sra_files
-prefetch --max-size 800G -O ./ --option-file ${d}/${I}
-echo "Converting Illumina SRA files to fastq.gz"
-ls -p | grep ERR > sra_dirs
-while read i; do mv "$i"*.sra .; rmdir "$i"; done<sra_dirs
-SRA= ls -1 *.sra
-for SRA in *.sra; do fastq-dump --gzip ${SRA}
-done
-mv *.fastq.gz ../raw_reads
-
-cd ${d}
-pwd
-echo "Downloading Nanopore SRA files from the given list of accessions"
-cd Nanopore/sra_files
-prefetch --max-size 800G -O ./ --option-file ${d}/${N}
-echo "Converting Nanopore SRA files to fastq.gz"
-ls -p | grep ERR > sra_dirs
-while read i; do mv "$i"*.sra .; rmdir "$i"; done<sra_dirs
-SRA= ls -1 *.sra
-for SRA in *.sra; do fastq-dump --gzip ${SRA}
-done
-mv *.fastq.gz ../raw_reads
+# COMPLETED    cd ${d}
+# COMPLETED    echo "Downloading Illumina SRA files from the given list of accessions"
+# COMPLETED    cd Illumina/sra_files
+# COMPLETED    prefetch --max-size 800G -O ./ --option-file ${d}/${I}
+# COMPLETED    echo "Converting Illumina SRA files to fastq.gz"
+# COMPLETED    ls -p | grep ERR > sra_dirs
+# COMPLETED    while read i; do mv "$i"*.sra .; rmdir "$i"; done<sra_dirs
+# COMPLETED    SRA= ls -1 *.sra
+# COMPLETED    for SRA in *.sra; do fastq-dump --gzip ${SRA}
+# COMPLETED    done
+# COMPLETED    mv *.fastq.gz ../raw_reads
+# COMPLETED    
+# COMPLETED    cd ${d}
+# COMPLETED    pwd
+# COMPLETED    echo "Downloading Nanopore SRA files from the given list of accessions"
+# COMPLETED    cd Nanopore/sra_files
+# COMPLETED    prefetch --max-size 800G -O ./ --option-file ${d}/${N}
+# COMPLETED    echo "Converting Nanopore SRA files to fastq.gz"
+# COMPLETED    ls -p | grep ERR > sra_dirs
+# COMPLETED    while read i; do mv "$i"*.sra .; rmdir "$i"; done<sra_dirs
+# COMPLETED    SRA= ls -1 *.sra
+# COMPLETED    for SRA in *.sra; do fastq-dump --gzip ${SRA}
+# COMPLETED    done
+# COMPLETED    mv *.fastq.gz ../raw_reads
 
 
 module unload sra-toolkit/3.0.2
@@ -108,8 +108,8 @@ done<fastq_list
 cd ..
 }
 
-trim_reads Illumina
-trim_reads Nanopore
+# COMPLETED    trim_reads Illumina
+# COMPLETED    trim_reads Nanopore
 
   
 module unload fastp/0.20.1

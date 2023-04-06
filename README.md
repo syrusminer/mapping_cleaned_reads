@@ -93,6 +93,8 @@ After creating the reference index, you are ready to map reads to the reference!
 bwa mem Reference/GCF_000688415.1_ASM68841v1_genomic.fna example.fastq > example.sam
 ```
 
+> To review the components of a ```.sam``` file, revisit the [genomics-processing-intro](https://github.com/KLab-UT/genomics-pipeline-intro) repository.
+
 ### Alignment File Processing
 
 Alignment files in the ```.sam``` format can be very large. You can convert the ```example.sam``` file to a ```.bam``` (binary alignment map) using the software package [samtools](http://www.htslib.org/).
@@ -113,6 +115,21 @@ You can also calculate your read depth at positions along your reference genome 
 ```
 samtools depth example.bam
 ```
+
+The output of this command gives (1) the sequence name of the reference, (2) the position along the reference, and (3) the number of reads that mapped to that position. You'll notice from the output of this command that all positions have at least a depth of 1, and that many of the positions of the reference are left out. This is because ```depth``` only returns the positions that were mapped to. To see all of the positions along the reference genome, you can do the following command:
+
+```
+samtools depth -a example.bam
+```
+
+To get an average coverage per position in the reference sequence, you can perform the following command:
+
+```
+samtools depth  example.bam |  awk '{sum+=$3} END { print "Average = ",sum/NR}'
+```
+
+Once again, be careful! This only considers the sites along the reference with a minimum coverage of ```1``` when calculating the average. Can you think of a way to calculate average while incorporating all of the sites (including those with mapping depth of ```0```? (Hint: look at what we did before this section).
+
 
 
 ```
