@@ -70,7 +70,7 @@ We will be using the software package ***[BWA](https://bio-bwa.sourceforge.net/b
 
 # Looking at the alignment program
 
-The ```bwa``` help menu on the command line isn't great, so to see options for running the software see the [website](https://bio-bwa.sourceforge.net/bwa.shtml). 
+The ```bwa``` help menu on the command line isn't great, so to see options for running the software see the [website](https://bio-bwa.sourceforge.net/bwa.shtml).
 
 ### Indexing
 Before mapping reads to the reference, an "index" that breaks the reference into manageable chunks needs to be created. Similar to when you want to search for a term in a textbook, having a searchable index is much more efficient than looking through all of the material.
@@ -130,7 +130,36 @@ samtools depth  example.bam |  awk '{sum+=$3} END { print "Average = ",sum/NR}'
 
 Once again, be careful! This only considers the sites along the reference with a minimum coverage of ```1``` when calculating the average. Can you think of a way to calculate average while incorporating all of the sites (including those with mapping depth of ```0```? (Hint: look at what we did before this section).
 
+### Exercise
+Run the script called ```mapping_cleaned_reads.sh``` (contained in the  bash_scripts directory). You can see flag and argument requirements by running the following command:
 
+```
+bash bash_scripts/mapping_cleaned_reads.sh -h
+```
+
+The path to the repository (```-d```) should be the path to your cloned
+repository of your fork. The path to the working directory (```-w```) should be
+the path to your personal directory in scratch. The illumina (```-I```) and
+nanopore (```-N```) flags are for the text files that contain the references to
+raw data. The reference genome (```-g```) is the fasta file contained within the
+Reference repository. Your number of threads (```-t```) is the number of CPU
+processors that you define in the batch script that runs your job.
+
+> NOTE: You need to create a personal directory in scratch at this location:
+
+```
+/scratch/general/nfs1/
+```
+
+> For example, if my username was "u0123456", then I would create a directory in
+this path called "u0123456". My path would look like this:
+
+```
+/scratch/general/nfs1/u0123456
+```
+
+Run the script with appropriate parameters for each flag. Then complete the
+worksheet before you push.
 
 ```
 add worksheet.md logfile
