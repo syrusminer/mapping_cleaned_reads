@@ -1,2 +1,8 @@
 
-arguments -lI, -lN, -g, and -t must be provided
+Working directory: 
+Illumina data:     
+Nanopore data:     
+Genome file:       
+Threads:           
+
+arguments -I, -N, -g, -t, and -d  must be provided

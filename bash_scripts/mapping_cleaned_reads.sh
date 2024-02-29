@@ -6,7 +6,7 @@ This program will trim and map reads from given SRA sequences files to compare m
     -h  show this help text
     -I  File or path to SRA accession list for Illumina data in tabular format
     -N  File or path to SRA accession list for Nanopore data in tabular format
-    -g  The reference genome (in fasta format). It is assumed that the genome is within the References directory in -d 
+    -g  The reference genome (in fasta format). It is assumed that the genome is within the References directory in -d
     -d  Path to the repository directory (the path to the repository you cloned from github)
     -w  Path to the working directory (where processed files will be stored)
     -t  Number of CPU processors"
@@ -56,32 +56,32 @@ mkdir -p ${w}/Nanopore/cleaned_reads
 mkdir -p ${w}/Nanopore/mapped_reads
 
 ##################################################################################
-#  Download fastq files for 22 samples from the Heikema et. al (2020) paper      # 
+#  Download fastq files for 22 samples from the Heikema et. al (2020) paper      #
 ##################################################################################
 
 module load sra-toolkit/3.0.2
 
-echo "Downloading Illumina SRA files from the given list of accessions"
-cd ${w}/Illumina/sra_files
-prefetch --max-size 800G -O ./ --option-file ${d}/${I}
-echo "Converting Illumina SRA files to fastq.gz"
-ls -p | grep ERR > sra_dirs
-while read i; do mv "$i"*.sra .; rmdir "$i"; done<sra_dirs
-SRA= ls -1 *.sra
-for SRA in *.sra; do fastq-dump --gzip ${SRA}
-done
-mv *.fastq.gz ../raw_reads
-
-echo "Downloading Nanopore SRA files from the given list of accessions"
-cd ${w}/Nanopore/sra_files
-prefetch --max-size 800G -O ./ --option-file ${d}/${N}
-echo "Converting Nanopore SRA files to fastq.gz"
-ls -p | grep ERR > sra_dirs
-while read i; do mv "$i"*.sra .; rmdir "$i"; done<sra_dirs
-SRA= ls -1 *.sra
-for SRA in *.sra; do fastq-dump --gzip ${SRA}
-done
-mv *.fastq.gz ../raw_reads
+# echo "Downloading Illumina SRA files from the given list of accessions"
+# cd ${w}/Illumina/sra_files
+# prefetch --max-size 800G -O ./ --option-file ${d}/${I}
+# echo "Converting Illumina SRA files to fastq.gz"
+# ls -p | grep ERR > sra_dirs
+# while read i; do mv "$i"*.sra .; rmdir "$i"; done<sra_dirs
+# SRA= ls -1 *.sra
+# for SRA in *.sra; do fastq-dump --gzip ${SRA}
+# done
+# mv *.fastq.gz ../raw_reads
+#
+# echo "Downloading Nanopore SRA files from the given list of accessions"
+# cd ${w}/Nanopore/sra_files
+# prefetch --max-size 800G -O ./ --option-file ${d}/${N}
+# echo "Converting Nanopore SRA files to fastq.gz"
+# ls -p | grep ERR > sra_dirs
+# while read i; do mv "$i"*.sra .; rmdir "$i"; done<sra_dirs
+# SRA= ls -1 *.sra
+# for SRA in *.sra; do fastq-dump --gzip ${SRA}
+# done
+# mv *.fastq.gz ../raw_reads
 
 
 module unload sra-toolkit/3.0.2
@@ -100,20 +100,20 @@ module load fastp/0.20.1
 echo "Trimming downloaded datasets with fastp."
 echo ""
 
-function trim_reads {
-cd ${w}/$1/raw_reads
-ls *.fastq.gz | cut -d "." -f "1" | sort > fastq_list
-while read sample; do fastp -w ${t} -i ${sample}.fastq.gz -o ../cleaned_reads/${sample}_cleaned.fastq.gz
-done<fastq_list
-cd ..
-}
+#function trim_reads {
+#cd ${w}/$1/raw_reads
+#ls *.fastq.gz | cut -d "." -f "1" | sort > fastq_list
+#while read sample; do fastp -w ${t} -i ${sample}.fastq.gz -o ../cleaned_reads/${sample}_cleaned.fastq.gz
+#done<fastq_list
+#cd ..
+#}
 
 trim_reads Illumina
 trim_reads Nanopore
 
-  
+
 module unload fastp/0.20.1
-    
+
 ######################
 # Indexing Reference #
 ######################
@@ -122,8 +122,8 @@ module load bwa/2020_03_19
 
 echo "Indexing Reference"
 echo ""
-cd ${w}
-bwa index ${w}/Reference/${g}
+cd ${d}
+bwa index ${d}/Reference/${g}
 
 module unload bwa/2020_03_19
 
@@ -138,9 +138,9 @@ echo "Aligning Illumina datasets againts reference with bwa mem, using $t thread
 echo ""
 
 function align_reads {
-cd $1/cleaned_reads
+cd ${w}/${1}/cleaned_reads
 ls *_cleaned.fastq.gz | awk -F'[._]' '{print $1}' | sort > cleaned_list
-while read sample; do bwa mem ${w}/Reference/${g} ${sample}_cleaned.fastq.gz > ${w}/$1/mapped_reads/${sample}_mapped.sam
+while read sample; do bwa mem ${d}/Reference/${g} ${sample}_cleaned.fastq.gz > ${w}/$1/mapped_reads/${sample}_mapped.sam
 samtools sort ${w}/$1/mapped_reads/${sample}_mapped.sam > ${w}/$1/mapped_reads/${sample}_sorted.bam -@ ${t}
 done<cleaned_list
 cd ..
