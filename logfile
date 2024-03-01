@@ -1,0 +1,199 @@
+
+Repository directory:  /uufs/chpc.utah.edu/common/home/u0612750/BIOL_4310/Exercises/Exercise_5/mapping_cleaned_reads
+Working directory:     /scratch/general/nfs1/u0612750
+Illumina data:         HumanNasalMicrobiota_Illumina.txt
+Nanopore data:         HumanNasalMicrobiota_Nanopore.txt
+Genome file:           GCF_000688415.1_ASM68841v1_genomic.fna
+Threads:               4
+
+Downloading Illumina SRA files from the given list of accessions
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Converting Illumina SRA files to fastq.gz
+ERR2850005.sra
+ERR2850006.sra
+ERR2850007.sra
+ERR2850008.sra
+ERR2850009.sra
+ERR2850017.sra
+ERR2850018.sra
+ERR2850019.sra
+ERR2850020.sra
+ERR2850021.sra
+ERR2850022.sra
+ERR2850041.sra
+ERR2850042.sra
+ERR2850043.sra
+ERR2850044.sra
+ERR2850045.sra
+ERR2850046.sra
+ERR2850058.sra
+ERR2850059.sra
+ERR2850060.sra
+ERR2850061.sra
+ERR2850062.sra
+Read 163883 spots for ERR2850005.sra
+Written 163883 spots for ERR2850005.sra
+Read 238651 spots for ERR2850006.sra
+Written 238651 spots for ERR2850006.sra
+Read 2160 spots for ERR2850007.sra
+Written 2160 spots for ERR2850007.sra
+Read 192039 spots for ERR2850008.sra
+Written 192039 spots for ERR2850008.sra
+Read 153004 spots for ERR2850009.sra
+Written 153004 spots for ERR2850009.sra
+Read 323185 spots for ERR2850017.sra
+Written 323185 spots for ERR2850017.sra
+Read 7771 spots for ERR2850018.sra
+Written 7771 spots for ERR2850018.sra
+Read 70848 spots for ERR2850019.sra
+Written 70848 spots for ERR2850019.sra
+Read 125507 spots for ERR2850020.sra
+Written 125507 spots for ERR2850020.sra
+Read 82562 spots for ERR2850021.sra
+Written 82562 spots for ERR2850021.sra
+Read 81841 spots for ERR2850022.sra
+Written 81841 spots for ERR2850022.sra
+Read 60199 spots for ERR2850041.sra
+Written 60199 spots for ERR2850041.sra
+Read 7544 spots for ERR2850042.sra
+Written 7544 spots for ERR2850042.sra
+Read 122906 spots for ERR2850043.sra
+Written 122906 spots for ERR2850043.sra
+Read 84128 spots for ERR2850044.sra
+Written 84128 spots for ERR2850044.sra
+Read 92879 spots for ERR2850045.sra
+Written 92879 spots for ERR2850045.sra
+Read 36570 spots for ERR2850046.sra
+Written 36570 spots for ERR2850046.sra
+Read 319881 spots for ERR2850058.sra
+Written 319881 spots for ERR2850058.sra
+Read 205775 spots for ERR2850059.sra
+Written 205775 spots for ERR2850059.sra
+Read 243988 spots for ERR2850060.sra
+Written 243988 spots for ERR2850060.sra
+Read 93697 spots for ERR2850061.sra
+Written 93697 spots for ERR2850061.sra
+Read 107748 spots for ERR2850062.sra
+Written 107748 spots for ERR2850062.sra
+Downloading Nanopore SRA files from the given list of accessions
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Converting Nanopore SRA files to fastq.gz
+ERR2850080.sra
+ERR2850081.sra
+ERR2850082.sra
+ERR2850083.sra
+ERR2850084.sra
+ERR2850092.sra
+ERR2850093.sra
+ERR2850094.sra
+ERR2850095.sra
+ERR2850096.sra
+ERR2850097.sra
+ERR2850116.sra
+ERR2850117.sra
+ERR2850118.sra
+ERR2850119.sra
+ERR2850120.sra
+ERR2850121.sra
+ERR2850133.sra
+ERR2850134.sra
+ERR2850135.sra
+ERR2850136.sra
+ERR2850137.sra
+Read 34922 spots for ERR2850080.sra
+Written 34922 spots for ERR2850080.sra
+Read 15246 spots for ERR2850081.sra
+Written 15246 spots for ERR2850081.sra
+Read 39463 spots for ERR2850082.sra
+Written 39463 spots for ERR2850082.sra
+Read 36591 spots for ERR2850083.sra
+Written 36591 spots for ERR2850083.sra
+Read 5106 spots for ERR2850084.sra
+Written 5106 spots for ERR2850084.sra
+Read 9802 spots for ERR2850092.sra
+Written 9802 spots for ERR2850092.sra
+Read 20416 spots for ERR2850093.sra
+Written 20416 spots for ERR2850093.sra
+Read 27027 spots for ERR2850094.sra
+Written 27027 spots for ERR2850094.sra
+Read 2971 spots for ERR2850095.sra
+Written 2971 spots for ERR2850095.sra
+Read 4405 spots for ERR2850096.sra
+Written 4405 spots for ERR2850096.sra
+Read 1860 spots for ERR2850097.sra
+Written 1860 spots for ERR2850097.sra
+Read 51235 spots for ERR2850116.sra
+Written 51235 spots for ERR2850116.sra
+Read 41648 spots for ERR2850117.sra
+Written 41648 spots for ERR2850117.sra
+Read 6329 spots for ERR2850118.sra
+Written 6329 spots for ERR2850118.sra
+Read 59643 spots for ERR2850119.sra
+Written 59643 spots for ERR2850119.sra
+Read 17767 spots for ERR2850120.sra
+Written 17767 spots for ERR2850120.sra
+Read 44949 spots for ERR2850121.sra
+Written 44949 spots for ERR2850121.sra
+Read 13687 spots for ERR2850133.sra
+Written 13687 spots for ERR2850133.sra
+Read 15450 spots for ERR2850134.sra
+Written 15450 spots for ERR2850134.sra
+Read 18298 spots for ERR2850135.sra
+Written 18298 spots for ERR2850135.sra
+Read 11189 spots for ERR2850136.sra
+Written 11189 spots for ERR2850136.sra
+Read 19595 spots for ERR2850137.sra
+Written 19595 spots for ERR2850137.sra
+SRA files were downloaded and .fastq files extracted in Illumina and Nanopore directories
+
+Done
+
+Trimming downloaded datasets with fastp.
+
+Indexing Reference
+
+Aligning Illumina datasets againts reference with bwa mem, using 4 threads.
+
+Time taken: 2135
