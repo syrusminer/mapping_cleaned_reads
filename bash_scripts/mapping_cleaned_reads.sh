@@ -61,27 +61,27 @@ mkdir -p ${w}/Nanopore/mapped_reads
 
 module load sra-toolkit/3.0.2
 
-# echo "Downloading Illumina SRA files from the given list of accessions"
-# cd ${w}/Illumina/sra_files
-# prefetch --max-size 800G -O ./ --option-file ${d}/${I}
-# echo "Converting Illumina SRA files to fastq.gz"
-# ls -p | grep ERR > sra_dirs
-# while read i; do mv "$i"*.sra .; rmdir "$i"; done<sra_dirs
-# SRA= ls -1 *.sra
-# for SRA in *.sra; do fastq-dump --gzip ${SRA}
-# done
-# mv *.fastq.gz ../raw_reads
-#
-# echo "Downloading Nanopore SRA files from the given list of accessions"
-# cd ${w}/Nanopore/sra_files
-# prefetch --max-size 800G -O ./ --option-file ${d}/${N}
-# echo "Converting Nanopore SRA files to fastq.gz"
-# ls -p | grep ERR > sra_dirs
-# while read i; do mv "$i"*.sra .; rmdir "$i"; done<sra_dirs
-# SRA= ls -1 *.sra
-# for SRA in *.sra; do fastq-dump --gzip ${SRA}
-# done
-# mv *.fastq.gz ../raw_reads
+echo "Downloading Illumina SRA files from the given list of accessions"
+cd ${w}/Illumina/sra_files
+prefetch --max-size 800G -O ./ --option-file ${d}/${I}
+echo "Converting Illumina SRA files to fastq.gz"
+ls -p | grep ERR > sra_dirs
+while read i; do mv "$i"*.sra .; rmdir "$i"; done<sra_dirs
+SRA= ls -1 *.sra
+for SRA in *.sra; do fastq-dump --gzip ${SRA}
+done
+mv *.fastq.gz ../raw_reads
+
+echo "Downloading Nanopore SRA files from the given list of accessions"
+cd ${w}/Nanopore/sra_files
+prefetch --max-size 800G -O ./ --option-file ${d}/${N}
+echo "Converting Nanopore SRA files to fastq.gz"
+ls -p | grep ERR > sra_dirs
+while read i; do mv "$i"*.sra .; rmdir "$i"; done<sra_dirs
+SRA= ls -1 *.sra
+for SRA in *.sra; do fastq-dump --gzip ${SRA}
+done
+mv *.fastq.gz ../raw_reads
 
 
 module unload sra-toolkit/3.0.2
@@ -100,13 +100,13 @@ module load fastp/0.20.1
 echo "Trimming downloaded datasets with fastp."
 echo ""
 
-#function trim_reads {
-#cd ${w}/$1/raw_reads
-#ls *.fastq.gz | cut -d "." -f "1" | sort > fastq_list
-#while read sample; do fastp -w ${t} -i ${sample}.fastq.gz -o ../cleaned_reads/${sample}_cleaned.fastq.gz
-#done<fastq_list
-#cd ..
-#}
+function trim_reads {
+cd ${w}/$1/raw_reads
+ls *.fastq.gz | cut -d "." -f "1" | sort > fastq_list
+while read sample; do fastp -w ${t} -i ${sample}.fastq.gz -o ../cleaned_reads/${sample}_cleaned.fastq.gz
+done<fastq_list
+cd ..
+}
 
 trim_reads Illumina
 trim_reads Nanopore

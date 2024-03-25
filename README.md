@@ -158,13 +158,18 @@ this path called "u0123456". My path would look like this:
 /scratch/general/nfs1/u0123456
 ```
 
-Run the script with appropriate parameters for each flag. Then complete the
-worksheet before you push.
+Here is an example of how to run the script from the main directory of the repository using all of the flags:
+
+```
+bash bash_scripts/mapping_cleaned_reads.sh -I HumanNasalMicrobiota_Illumina.txt -N HumanNasalMicrobiota_Nanopore.txt -g GCF_000688415.1_ASM68841v1_genomic.fna -d ~/BIOL_4310/Exercises/Exercise_5/mapping_cleaned_reads -w /scratch/general/nfs1/u0123456 -t 4
+```
+
+Create a batch script to run the bash script with appropriate parameters for each flag. Then complete the worksheet before you push.
+
+> Tip: You should do a trial run on an abbreviated dataset during an interactivesession. Create modified versions of  the Illumina and Nanopore text files so theycontain only one ID. Initiate an interactive session by running ```salloc```.Then you can execute the above bash command without submitting a batch job.
 
 ```
 add worksheet.md logfile
-# Make sure you don't add all of the genomic files, just the worksheet.md
-# The .gitignore includes the genomic files, so they won't be added by default
 git commit -m "ran script and answered worksheet questions"
 git push
 ```
