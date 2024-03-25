@@ -1,22 +1,15 @@
 # Mapping Cleaned Reads Worksheet
 
 <!--- Write name below --->
-<<<<<<< HEAD
 ## Name: Syrus Miner 
-=======
-## Name:
->>>>>>> 81ea5db4a0fcb755ccd162ce344f6aea5c615a0d
 
 <!--- For this worksheet, answer the following questions --->
 
 ## Q1: What does it mean to map/align reads to a reference?
-<<<<<<< HEAD
+
 Answer: Mapping and alligning reads to a reference genome involves determining
 the most likely origin of each read to the reference sequence. By doing this
 one can determine genetic variations in the genetic code.   
-=======
-Answer:
->>>>>>> 81ea5db4a0fcb755ccd162ce344f6aea5c615a0d
 
 ## Q2: What read mapper does the mapping_cleaned_reads.sh script use?
 Answer:
