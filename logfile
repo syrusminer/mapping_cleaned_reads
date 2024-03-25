@@ -1,0 +1,19 @@
+
+Repository directory:  /uufs/chpc.utah.edu/common/home/u1207142/Biol4310/Classwork/mapping_cleaned_reads
+Working directory:     /scratch/general/nfs1/u1207142
+Illumina data:         illumina.txt
+Nanopore data:         nanopore.txt
+Genome file:           /uufs/chpc.utah.edu/common/home/u1207142/Biol4310/Classwork/mapping_cleaned_reads/Reference/GCF_000688415.1_ASM68841v1_genomic.fna
+Threads:               8
+
+SRA files were downloaded and .fastq files extracted in Illumina and Nanopore directories
+
+Done
+
+Trimming downloaded datasets with fastp.
+
+Indexing Reference
+
+Aligning Illumina datasets againts reference with bwa mem, using 8 threads.
+
+Time taken: 7
